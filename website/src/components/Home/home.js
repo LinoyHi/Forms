@@ -10,7 +10,7 @@ export function Home() {
     return (
         <>
             <h1>welcome {userData?.firstName || <span className="App-link" onClick={() => navigate('/')}>log in first</span>}</h1>
-            {userData? <button onClick={()=>dispatch(disconnect())}>log out</button>: 
+            {userData.firstName? <button onClick={()=>dispatch(disconnect())}>log out</button>: 
             <button onClick={()=>navigate('/signup')}>sign up</button>}
         </>
         
