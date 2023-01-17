@@ -33,7 +33,7 @@ Go to the web-server folder = > src folder = > config folder => config file
 ### What is already optional?
 <details open>
     <summary>Four validations already exsist:</summary>
-    <li>- [x] require <sub>checks if any input was added</sub></li>
+    <li>- [x] require <sub>checks if any input was added also if a line is required there's a red star next to it</sub></li>
     <li>- [x] email <sub>checks if the input is the correct format for an email using regax</sub></li>
     <li>- [x] minLen <sub>checks if the input lengths is at least the amount you asked for</sub></li>
     <li>- [x] numbers <sub>checks if the input has at least 1 number</sub></li>
@@ -55,13 +55,13 @@ To add them simply go to the api file (website folder => src folder => DAL folde
 <details>
     <summary>Log in form</summary>
     <ul>
-        <li><img src='https://user-images.githubusercontent.com/108211669/201931396-66583297-984e-4b0e-a3e9-3d987eff82dc.png'/> </li>
+        <li><img alt='image of the Log in form' src='https://user-images.githubusercontent.com/108211669/212909994-93116aa2-69d3-4e89-9769-667ce029d4fb.png'/> </li>
     </ul>
 </details>
 <details>
     <summary>Sign up form</summary>
     <ul>
-        <li><img src='https://user-images.githubusercontent.com/108211669/201932187-65842bd9-0bc6-42b1-a1aa-e4c86381978a.png'/></li>
+        <li><img alt='image of the Sign up form' src='https://user-images.githubusercontent.com/108211669/212910221-d7eb36ad-6c21-4b23-a358-2f02f8db7663.png'/></li>
     </ul>
 </details>
 <details open>
@@ -71,7 +71,7 @@ To add them simply go to the api file (website folder => src folder => DAL folde
          <summary>before login in</summary>
          <ul>
             <li><img src='https://user-images.githubusercontent.com/108211669/201970481-f3a6b51f-be93-41d4-b0d8-c354acff78a9.png'/>
-            <p>a click on the light blue text would take the user back to the log in form and a click on the sign up button would take the user to the sign up form</p></li>
+            <p>a click on the light blue text would take the user back to the log in form and a click on the sign up button would take the user to the sign up form</p>             </li>
          </ul>
       </details>
       <details>
