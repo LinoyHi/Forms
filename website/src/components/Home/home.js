@@ -3,7 +3,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { disconnect } from "../../features/user/userSlice";
 
 export function Home() {
-    const userData = useSelector((state)=>state.user.user);
+    const userData = useSelector((state)=>state.user);
     const dispatch = useDispatch();
     const navigate = useNavigate()
 

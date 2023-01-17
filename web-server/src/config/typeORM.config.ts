@@ -6,7 +6,7 @@ export const typeORMConfig: TypeOrmModuleOptions = {
   port: 3306,
   username: 'root',
   password: 'Tolhib14!',
-  database: 'fakeDATA',
+  database: 'formsdb',
   entities: ['dist/**/*.entity{.ts,.js}'],
-  synchronize: false //to prevent changes turn this to false
+  synchronize: true //to prevent changes turn this to false
 };

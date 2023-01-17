@@ -1,4 +1,5 @@
-import { Controller, Get, Post, Body, Patch, Param, Delete, Session, HttpStatus, HttpException } from '@nestjs/common';
+import { Controller, Get, Post, Body, Patch, Param, Delete, 
+  Session, HttpStatus, HttpException } from '@nestjs/common';
 import { UsersService } from './users.service';
 import { CreateUserDto } from './dto/create-user.dto';
 import { UpdateUserDto } from './dto/update-user.dto';
@@ -29,13 +30,7 @@ export class UsersController {
     @Body() body: { username: string, email: string, password: string },
     @Session() session: Record<string, any>
   ) {
-    let user :CreateUserDto;
-    if (body.username) {
-      user = await this.usersService.findByUsername(body.username)
-    }
-    else {
-      user = await this.usersService.findByEmail(body.email)
-    }
+    const user= await this.usersService.findUserEmailOrUserName(body)
     if (user && bcrypt.compareSync(body.password, user.password)) {
       session.user = user
       user.password = undefined
@@ -56,13 +51,51 @@ export class UsersController {
     return session.user
   }
 
-  @Patch(':id')
-  update(@Param('id') id: string, @Body() updateUserDto: UpdateUserDto) {
-    return this.usersService.update(+id, updateUserDto);
+  @Post('/forgotPassword')
+  async sendMail(@Body() userAccess: {username: string, email: string, expiredate: Date}){
+    const user= await this.usersService.findUserEmailOrUserName(userAccess)
+    if (user){
+      return this.usersService.sendMail({user:user, 
+        expireDate: userAccess.expiredate})
+    }
+    throw new HttpException(userAccess.username||userAccess.email, HttpStatus.NOT_FOUND);
   }
 
-  @Delete(':id')
-  remove(@Param('id') id: string) {
-    return this.usersService.remove(+id);
+  @Post('/confirmUser')
+  async returnExpirationDate(@Body() {userIdentifier , code}){
+    const user= await this.usersService.findUserEmailOrUserName(userIdentifier)
+    const expireDate = await this.usersService.confirmUser(user.name, code)
+    if(expireDate){
+      return expireDate.expiredPasswordChange
+    }
+    throw new HttpException('no expire date found', HttpStatus.NOT_FOUND)
+  }
+
+  @Patch('/update/:identifier')
+  async update(@Param('identifier') identifier: string, @Body() updateUserDto: UpdateUserDto) {
+    let user = await this.usersService.findByEmail(identifier)
+    if(!user){
+      user = await this.usersService.findByUsername(identifier)
+    }
+    if (updateUserDto.password) {
+      const expireDate = await this.usersService.getPermissionToChangePassword(identifier)
+      if(expireDate){
+        if(new Date(expireDate.expiredPasswordChange) > new Date()){
+          const hash = bcrypt.hashSync(updateUserDto.password, 10);
+          updateUserDto.password = hash
+          this.usersService.deleteExpiration(user.name)
+        }
+      }
+      else{
+        throw new HttpException('not allowed to change password', HttpStatus.FORBIDDEN)
+      }
+    }
+    const newUser = {...user, ...updateUserDto}
+    return this.usersService.update(newUser);
+  }
+
+  @Delete(':usernam')
+  remove(@Param('usernam') usernam: string) {
+    return this.usersService.remove(usernam);
   }
 }

@@ -50,20 +50,26 @@ function Formcomp({formTitle , onclick, data , submitName}) {
                 changeButton={changebutton} validate={obj.validations}
                 class={obj.class} id={obj.id} name={name} optioneror={hideOptionEror} onblur={check} 
                 label={obj.label} iconName={obj.iconName} placeholder={obj.placeholder} 
-                eror={obj.eror} onInput={obj.type==='current-password'? hideContent:()=>{}} options={obj.options}></FormGroupType>)
+                viewed={obj.ViewType} view={name.toLocaleLowerCase().includes('password')? viewPassword:()=>{}} eror={obj.eror} options={obj.options}></FormGroupType>)
         }
         return(formarray)
+    }
+
+    function viewPassword(e){
+        if(e.target.classList[1] == 'bi-eye'){
+            e.target.classList = 'bi bi-eye-slash input-group-text'
+            data[e.target.parentElement.getElementsByTagName('input')[0].name].ViewType = 'text'
+        }
+        else{
+            e.target.classList = 'bi bi-eye input-group-text'
+            data[e.target.parentElement.getElementsByTagName('input')[0].name].ViewType = 'password'
+        }
+        setdata({...data})
     }
 
     function check(e) {
         data[e.target.name].value = e.target.value
         inputCheck(e.target.name)
-        setdata({...data})
-    }
-
-    function hideContent(e){
-        data[e.target.name].value = e.target.value
-        e.target.value= '*'.repeat(e.target.value.length)
         setdata({...data})
     }
 

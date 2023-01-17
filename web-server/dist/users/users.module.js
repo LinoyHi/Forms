@@ -12,11 +12,12 @@ const users_service_1 = require("./users.service");
 const users_controller_1 = require("./users.controller");
 const typeorm_1 = require("@nestjs/typeorm");
 const user_repository_1 = require("./user.repository");
+const changePassword_repository_1 = require("./changePassword.repository");
 let UsersModule = class UsersModule {
 };
 UsersModule = __decorate([
     (0, common_1.Module)({
-        imports: [typeorm_1.TypeOrmModule.forFeature([user_repository_1.UserRepository])],
+        imports: [typeorm_1.TypeOrmModule.forFeature([user_repository_1.UserRepository, changePassword_repository_1.PasswordRepository])],
         controllers: [users_controller_1.UsersController],
         providers: [users_service_1.UsersService],
         exports: [users_service_1.UsersService]

@@ -16,7 +16,7 @@ const formData = {
         serverName: 'lastName',
         placeholder: "last name",
         label: "Last Name", iconName: "person-circle",
-        validations: { minLen: 2, require:true },
+        validations: { minLen: 2, require: true },
         eror: "",
         type: "text",
         options: [],
@@ -40,11 +40,12 @@ const formData = {
         serverName: 'password',
         placeholder: "Enter Password",
         label: "Password", iconName: "key-fill",
-        validations: { require:true, minLen: 2 },
+        validations: { require: true, minLen: 2 },
         eror: "",
         type: "current-password",
         class: "col-6",
-        value: ""
+        value: "",
+        ViewType: "password",
     },
     Email: {
         id: 2,
@@ -142,11 +143,50 @@ export async function newUser(newuser) {
     })
 }
 
-export async function getUser(){
+export async function getUser() {
     return await fetch('http://localhost:4005/users/connected', {
         credentials: 'include', headers: {
             'Accept': 'application/json',
             'Content-Type': 'application/json'
         }
+    })
+}
+
+export async function getExpiration(encryptedUser) {
+    return await fetch(`http://localhost:4005/users/confirmUser/${encryptedUser}`, {
+        credentials: 'include', headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json'
+        }
+    })
+}
+
+export async function fogotPasswordMail(data) {
+    return await fetch('http://localhost:4005/users/forgotPassword', {
+        credentials: 'include', method: 'POST'
+        , headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json'
+        }, body: JSON.stringify(data)
+    })
+}
+
+export async function validateCode(identifier, code){
+    return await fetch('http://localhost:4005/users/confirmUser', {
+        credentials: 'include', method: 'Post'
+        , headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json'
+        }, body: JSON.stringify({userIdentifier:identifier , code})
+    })
+}
+
+export async function changePassword(identifier,password){
+    return await fetch(`http://localhost:4005/users/update/${identifier}`, {
+        credentials: 'include', method: 'PATCH'
+        , headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json'
+        }, body: JSON.stringify({password})
     })
 }
