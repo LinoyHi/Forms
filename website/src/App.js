@@ -6,13 +6,10 @@ import SignUp from "./components/forms/SignUp";
 import { Route, Routes} from 'react-router-dom';
 import { Home } from "./components/Home/home";
 import ChangePassword from "./components/forms/changePassword";
-import { useSelector } from "react-redux";
 import PageNotFound from "./components/pageNotFound/PageNotFound";
 import VerifyToChange from "./components/forms/enterPassword";
 
 function App() {
-
-  const user = useSelector(state => state.user)
 
   return (
     <section>
