@@ -6,7 +6,6 @@ export function Home() {
     const userData = useSelector((state)=>state.user);
     const dispatch = useDispatch();
     const navigate = useNavigate()
-    console.log(userData)
 
     return (
         <>
