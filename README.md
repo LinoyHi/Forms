@@ -25,9 +25,31 @@
     </ul>
 </details>
 
-# How to Connect Your MySQL?
+# How To Connect Your MySQL?
 Go to the web-server folder = > src folder = > config folder => config file
 ![image](https://user-images.githubusercontent.com/108211669/198382456-b2e9e295-8405-45ff-b58d-12a1ca83bdf1.png)
+
+# How To Connect Your Business Email?
+Go to the web-server folder = > src folder = > users folder => users.service.ts file => sendMail function
+![image](https://user-images.githubusercontent.com/108211669/212913263-0cf83432-4ff5-46dd-a106-19a1bdf545ee.png)
+the mail I posted is fake and only in use for those projects you can keep it as it is just keep in mind you won't be able to log in to this email
+<br/>
+**if you do change** 
+<br/>
+please change the mail in both **transporter** AND **mailOptions**
+
+## How To Get The Pass NodeMailer Ask For?
+<details close>
+    <summary>Gmail instructions</summary>
+    <ul>
+        <li> Enter the security on your account </li>
+        <li> Find the 2 step verification </li>
+        <li> After approving that you'll get a other apps passwords </li>
+        <li> Enter for another write nodeMailer and you'll recive a password </li>
+        <li> Enter that password as your pass </li>
+        <li> Send a mail to check connection :) </li>
+    </ul>
+</details>
 
 # How to add/change validation?
 ### What is already optional?
