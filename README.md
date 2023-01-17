@@ -5,6 +5,7 @@
         <li> MySQL</li>
         <li> react</li>
         <li> Redux/Toolkit</li>
+        <li> Redux/Persist</li>
         <li> nestJS</li>
         <li> typeORM <sub>//connecting to mysql//</sub></li>
         <li> bootstrap</li>
@@ -14,8 +15,15 @@
 
 
 # Which Forms?
-- [x] sign in 
-- [x] sign up
+- [x] Sign in 
+- [x] Sign up 
+<details open>
+    <summary>Forms for forgot password</summary>
+    <ul>
+        <li> - [X] Email code confirmation <sub>//sent code in email//</sub></li>
+        <li> - [x] Change password</li>
+    </ul>
+</details>
 
 # How to Connect Your MySQL?
 Go to the web-server folder = > src folder = > config folder => config file
