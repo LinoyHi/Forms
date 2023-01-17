@@ -1,12 +1,17 @@
-import { HttpException, HttpStatus, Injectable } from '@nestjs/common';
+import { Injectable } from '@nestjs/common';
+import { PasswordRepository } from './changePassword.repository';
 import { CreateUserDto } from './dto/create-user.dto';
 import { UpdateUserDto } from './dto/update-user.dto';
+import { ChangePassword } from './entities/changePassword.entity';
 import { User } from './entities/user.entity';
 import { UserRepository } from './user.repository';
+const nodemailer = require('nodemailer');
+const Cryptr = require('cryptr');
+const cryptr = new Cryptr('secretUsername');
 
 @Injectable()
 export class UsersService {
-  constructor(private userRipo: UserRepository) { }
+  constructor(private userRipo: UserRepository, private passwordChangeRipo: PasswordRepository) { }
 
   create(createUserDto: CreateUserDto) {
     const customer = this.userRipo.create([{ ...createUserDto }]);
@@ -29,11 +34,71 @@ export class UsersService {
     return this.userRipo.findByUsername(name);
   }
 
-  update(id: number, updateUserDto: UpdateUserDto) {
-    return `This action updates a #${id} user`;
+  async findUserEmailOrUserName(userenters:{username:string,email:string}){
+    let user :CreateUserDto;
+    if (userenters.username) {
+      user = await this.findByUsername(userenters.username)
+    }
+    else {
+      user = await this.findByEmail(userenters.email)
+    }
+    return user
   }
 
-  remove(id: number) {
-    return `This action removes a #${id} user`;
+  update( updateUserDto: UpdateUserDto) {
+    return this.userRipo.save(updateUserDto);
+  }
+
+  remove(username: string) {
+    return `This action removes a ${username} user`;
+  }
+
+  async confirmUser(name:string,confirmcode:string) : Promise<ChangePassword>{
+    return await this.passwordChangeRipo.findOne({name, confirmcode})
+  }
+
+  async getPermissionToChangePassword(name: string): Promise<ChangePassword>{
+    return await this.passwordChangeRipo.findOne({name})
+  }
+
+  async deleteExpiration(name:string){
+    this.passwordChangeRipo.remove(await this.passwordChangeRipo.findOne({name}))
+  }
+
+  sendMail({ user, expireDate },) {
+    const code = cryptr.encrypt(user.name).slice(0,8)
+
+    this.passwordChangeRipo.save({name:user.name, confirmcode: code, expiredPasswordChange: expireDate})
+
+    const transporter = nodemailer.createTransport({
+      service: 'gmail',
+      auth: {
+        user: 'website1data@gmail.com',
+        pass: 'sdoivyjdgcxkcbmv'
+      }
+    });
+
+    const mailOptions = {
+      from: 'website1data@gmail.com',
+      to: user.email,
+      subject: 'Password Change',
+      html: `<div>
+      <p>to change your password enter this code:</p>
+      <h1 style="background-color: silver;">
+      ${code}</h1>
+      <br/>
+      <br/>
+      <br/>
+      <p>thank you for using my website ${new Date().getFullYear()}</p>
+      </div>`
+    };
+
+    transporter.sendMail(mailOptions, function (error, info) {
+      if (error) {
+        console.log(error);
+      } else {
+        console.log('Email sent: ' + info.response);
+      }
+    });
   }
 }

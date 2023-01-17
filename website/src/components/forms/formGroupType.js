@@ -4,10 +4,10 @@ import InputGroup from 'react-bootstrap/InputGroup';
 import ErorMessage from "./Error";
 
 function FormGroupType(props) {
-    function onKey(e){
-        if(e.key === 'Enter'){
+    function onKey(e) {
+        if (e.key === 'Enter') {
             const next = e.target.parentElement.parentElement.nextElementSibling
-            if(next){
+            if (next) {
                 e.preventDefault()
                 next.firstElementChild.nextElementSibling.firstElementChild.nextElementSibling.focus()
             }
@@ -17,17 +17,23 @@ function FormGroupType(props) {
 
     const type = () => {
         if (props.type !== 'option' && props.type !== 'button') {
-            return (<Form.Control
-                type={props.type}
-                min={props.min}
-                placeholder={props.placeholder}
-                defaultValue={props.value}
-                name={props.name}
-                onKeyPress={onKey}
-                onInput={props.onInput}
-                onBlur={props.onblur}
-                autoComplete={props.type.includes('password')? 'off':''}
-            />)
+            return (<>
+                <Form.Control
+                    type={props.type.includes('password')? props.viewed:props.type}
+                    min={props.min}
+                    placeholder={props.placeholder}
+                    defaultValue={props.value}
+                    name={props.name}
+                    onKeyPress={onKey}
+                    onInput={props.onInput}
+                    onBlur={props.onblur}
+                    autoComplete={props.type.includes('password') ? 'off' : ''}
+                />
+                {
+                    props.type.includes('password') &&
+                    <InputGroup.Text className={`bi bi-eye`} onClick={(e) => props.view(e)}></InputGroup.Text>
+                }
+            </>)
         }
         else if (props.type === 'option') {
             return (<Form.Control onClick={(e) => props.optioneror(e, props.id)} defaultValue={props.value} as='select'>

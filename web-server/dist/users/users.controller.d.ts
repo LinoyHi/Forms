@@ -13,6 +13,15 @@ export declare class UsersController {
     }, session: Record<string, any>): Promise<CreateUserDto>;
     logout(session: Record<string, any>): string;
     returnUser(session: Record<string, any>): any;
-    update(id: string, updateUserDto: UpdateUserDto): string;
-    remove(id: string): string;
+    sendMail(userAccess: {
+        username: string;
+        email: string;
+        expiredate: Date;
+    }): Promise<void>;
+    returnExpirationDate({ userIdentifier, code }: {
+        userIdentifier: any;
+        code: any;
+    }): Promise<Date>;
+    update(identifier: string, updateUserDto: UpdateUserDto): Promise<UpdateUserDto & import("./entities/user.entity").User>;
+    remove(usernam: string): string;
 }

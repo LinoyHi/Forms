@@ -11,10 +11,15 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.UsersService = void 0;
 const common_1 = require("@nestjs/common");
+const changePassword_repository_1 = require("./changePassword.repository");
 const user_repository_1 = require("./user.repository");
+const nodemailer = require('nodemailer');
+const Cryptr = require('cryptr');
+const cryptr = new Cryptr('secretUsername');
 let UsersService = class UsersService {
-    constructor(userRipo) {
+    constructor(userRipo, passwordChangeRipo) {
         this.userRipo = userRipo;
+        this.passwordChangeRipo = passwordChangeRipo;
     }
     create(createUserDto) {
         const customer = this.userRipo.create([Object.assign({}, createUserDto)]);
@@ -32,16 +37,68 @@ let UsersService = class UsersService {
     findByUsername(name) {
         return this.userRipo.findByUsername(name);
     }
-    update(id, updateUserDto) {
-        return `This action updates a #${id} user`;
+    async findUserEmailOrUserName(userenters) {
+        let user;
+        if (userenters.username) {
+            user = await this.findByUsername(userenters.username);
+        }
+        else {
+            user = await this.findByEmail(userenters.email);
+        }
+        return user;
     }
-    remove(id) {
-        return `This action removes a #${id} user`;
+    update(updateUserDto) {
+        return this.userRipo.save(updateUserDto);
+    }
+    remove(username) {
+        return `This action removes a ${username} user`;
+    }
+    async confirmUser(name, confirmcode) {
+        return await this.passwordChangeRipo.findOne({ name, confirmcode });
+    }
+    async getPermissionToChangePassword(name) {
+        return await this.passwordChangeRipo.findOne({ name });
+    }
+    async deleteExpiration(name) {
+        this.passwordChangeRipo.remove(await this.passwordChangeRipo.findOne({ name }));
+    }
+    sendMail({ user, expireDate }) {
+        const code = cryptr.encrypt(user.name).slice(0, 8);
+        this.passwordChangeRipo.save({ name: user.name, confirmcode: code, expiredPasswordChange: expireDate });
+        const transporter = nodemailer.createTransport({
+            service: 'gmail',
+            auth: {
+                user: 'website1data@gmail.com',
+                pass: 'sdoivyjdgcxkcbmv'
+            }
+        });
+        const mailOptions = {
+            from: 'website1data@gmail.com',
+            to: user.email,
+            subject: 'Password Change',
+            html: `<div>
+      <p>to change your password enter this code:</p>
+      <h1 style="background-color: silver;">
+      ${code}</h1>
+      <br/>
+      <br/>
+      <br/>
+      <p>thank you for using my website ${new Date().getFullYear()}</p>
+      </div>`
+        };
+        transporter.sendMail(mailOptions, function (error, info) {
+            if (error) {
+                console.log(error);
+            }
+            else {
+                console.log('Email sent: ' + info.response);
+            }
+        });
     }
 };
 UsersService = __decorate([
     (0, common_1.Injectable)(),
-    __metadata("design:paramtypes", [user_repository_1.UserRepository])
+    __metadata("design:paramtypes", [user_repository_1.UserRepository, changePassword_repository_1.PasswordRepository])
 ], UsersService);
 exports.UsersService = UsersService;
 //# sourceMappingURL=users.service.js.map

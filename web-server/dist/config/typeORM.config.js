@@ -7,8 +7,8 @@ exports.typeORMConfig = {
     port: 3306,
     username: 'root',
     password: 'Tolhib14!',
-    database: 'fakeDATA',
+    database: 'formsdb',
     entities: ['dist/**/*.entity{.ts,.js}'],
-    synchronize: false
+    synchronize: true
 };
 //# sourceMappingURL=typeORM.config.js.map
