@@ -48,7 +48,7 @@ export default function ChangePassword(){
                 id: 0,
                 serverName: 'password',
                 placeholder: "Enter password",
-                label: "Code", iconName: "key-fill",
+                label: "password", iconName: "key-fill",
                 validations: { require: true, minLen: 5 },
                 eror: "",
                 type: "current-password",
