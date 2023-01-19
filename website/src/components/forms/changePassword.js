@@ -42,7 +42,6 @@ export default function ChangePassword(){
 
     return (
         <div>
-            <span>you recived an email with a secret code plese enter the code here:</span>
             <Formcomp formTitle='Change Password' onclick={change} 
             data={{password: {
                 id: 0,
@@ -52,7 +51,7 @@ export default function ChangePassword(){
                 validations: { require: true, minLen: 5 },
                 eror: "",
                 type: "current-password",
-                class: "col-6",
+                class: "col-lg-6 col-md-12",
                 value: "",        
                 ViewType: "password",
             },
@@ -64,7 +63,7 @@ export default function ChangePassword(){
                 validations: { require: true, minLen: 5 },
                 eror: "",
                 type: "current-password",
-                class: "col-6",
+                class: "col-lg-6 col-md-12",
                 value: "",        
                 ViewType: "password",
             }}} submitName='Change Password'></Formcomp>

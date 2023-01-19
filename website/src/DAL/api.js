@@ -8,7 +8,7 @@ const formData = {
         eror: "",
         type: "text",
         options: [],
-        class: "col-6",
+        class: "col-lg-6 col-md-12",
         value: ""
     },
     lastName: {
@@ -20,7 +20,7 @@ const formData = {
         eror: "",
         type: "text",
         options: [],
-        class: "col-6",
+        class: "col-lg-6 col-md-12",
         value: ""
     },
     username: {
@@ -32,7 +32,7 @@ const formData = {
         eror: "",
         type: "text",
         options: [],
-        class: "col-6",
+        class: "col-lg-6 col-md-12",
         value: ""
     },
     password: {
@@ -43,7 +43,7 @@ const formData = {
         validations: { require: true, minLen: 2 },
         eror: "",
         type: "current-password",
-        class: "col-6",
+        class: "col-lg-6 col-md-12",
         value: "",
         ViewType: "password",
     },
@@ -56,7 +56,7 @@ const formData = {
         eror: "",
         type: "text",
         options: [],
-        class: "col-6",
+        class: "col-lg-6 col-md-12",
         value: ""
     },
     phone: {
@@ -68,7 +68,7 @@ const formData = {
         eror: "",
         type: "phone",
         options: [],
-        class: "col-6",
+        class: "col-lg-6 col-md-12",
         value: ""
     },
     City: {
@@ -80,7 +80,7 @@ const formData = {
         eror: "",
         type: "text",
         options: [],
-        class: "col-6",
+        class: "col-lg-6 col-md-12",
         value: ""
     },
     Country: {
@@ -92,7 +92,7 @@ const formData = {
         eror: "",
         type: "text",
         options: [],
-        class: "col-6",
+        class: "col-lg-6 col-md-12",
         value: ""
     },
     Address: {
@@ -104,7 +104,7 @@ const formData = {
         eror: "",
         type: "text",
         options: [],
-        class: "singleLine",
+        class: "col-12",
         value: ""
     },
 }

@@ -8,7 +8,7 @@ import FormGroupType from './formGroupType';
 import './form.css'
 
 
-function Formcomp({formTitle , onclick, data , submitName}) {
+function Formcomp({ formTitle, onclick, data, submitName }) {
     /*gets a group= array of objects each array is a row and each object is a formGroup in the row 
     and a submitName= string of what will the submit button will say
     object looks like:
@@ -42,47 +42,49 @@ function Formcomp({formTitle , onclick, data , submitName}) {
         }
     };
 
-    function crateformline(data){
-        let formarray= []
-        for (const name in data){
-            const obj= data[name];
+    function crateformline(data) {
+        let formarray = []
+        for (const name in data) {
+            const obj = data[name];
             formarray.push(<FormGroupType key={obj.id} value={obj.value} type={obj.type}
                 changeButton={changebutton} validate={obj.validations}
-                class={obj.class} id={obj.id} name={name} optioneror={hideOptionEror} onblur={check} 
-                label={obj.label} iconName={obj.iconName} placeholder={obj.placeholder} 
-                viewed={obj.ViewType} view={name.toLocaleLowerCase().includes('password')? viewPassword:()=>{}} eror={obj.eror} options={obj.options}></FormGroupType>)
+                class={obj.class} id={obj.id} name={name} optioneror={hideOptionEror} onblur={check}
+                label={obj.label} iconName={obj.iconName} placeholder={obj.placeholder}
+                viewed={obj.ViewType} view={name.toLocaleLowerCase().includes('password') ? viewPassword : () => { }} eror={obj.eror} options={obj.options}></FormGroupType>)
         }
-        return(formarray)
+        return (formarray)
     }
 
-    function viewPassword(e){
-        if(e.target.classList[1] == 'bi-eye'){
+    function viewPassword(e) {
+        if (e.target.classList[1] == 'bi-eye') {
             e.target.classList = 'bi bi-eye-slash input-group-text'
             data[e.target.parentElement.getElementsByTagName('input')[0].name].ViewType = 'text'
         }
-        else{
+        else {
             e.target.classList = 'bi bi-eye input-group-text'
             data[e.target.parentElement.getElementsByTagName('input')[0].name].ViewType = 'password'
         }
-        setdata({...data})
+        setdata({ ...data })
     }
 
     function check(e) {
         data[e.target.name].value = e.target.value
         inputCheck(e.target.name)
-        setdata({...data})
+        setdata({ ...data })
     }
 
     function inputCheck(name) {
-        data[name].eror = validate(data[name].value, data[name].validations, data[name].label)
-        setdata({...data})
+        if (data[name].validations.require) {
+            data[name].eror = validate(data[name].value, data[name].validations, data[name].label)
+            setdata({ ...data })
+        }
     }
 
     function changebutton(e, name) {
         data[name].value = e.target.textContent
         e.target.parentElement.getElementsByClassName('choosen')[0]?.classList.remove('choosen')
         e.target.classList.add('choosen')
-        setdata({...data})
+        setdata({ ...data })
     }
 
     function hideOptionEror(e, index) {
