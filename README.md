@@ -77,13 +77,22 @@ To add them simply go to the api file (website folder => src folder => DAL folde
 <details>
     <summary>Log in form</summary>
     <ul>
-        <li><img alt='image of the Log in form' src='https://user-images.githubusercontent.com/108211669/212909994-93116aa2-69d3-4e89-9769-667ce029d4fb.png'/> </li>
+        <li><img alt='image of the Log in form' src='https://user-images.githubusercontent.com/108211669/213479511-6e766e34-977a-4881-9aaa-afdecd6be757.png'/> </li>
     </ul>
 </details>
 <details>
     <summary>Sign up form</summary>
     <ul>
-        <li><img alt='image of the Sign up form' src='https://user-images.githubusercontent.com/108211669/212910221-d7eb36ad-6c21-4b23-a358-2f02f8db7663.png'/></li>
+        <li><img alt='image of the Sign up form' src='https://user-images.githubusercontent.com/108211669/213479708-764d19b4-8a83-4264-8cf9-4db2f5254a4b.png'/></li>
+    </ul>
+</details>
+<details>
+    <summary>Forgot Password Process</summary>
+    <ul>
+        <li><img alt='image of the enter code form' src='https://user-images.githubusercontent.com/108211669/213480214-348ef531-a17b-4d7c-ab76-13b073bf66cc.png'/></li>
+        <li><img alt='image of the code email' src='https://user-images.githubusercontent.com/108211669/213480351-7d52a366-12ea-413b-bf61-b6b2a5f2f889.png'/></li>
+        <li><img alt='image of the change password form' src='https://user-images.githubusercontent.com/108211669/213480482-6dd5c005-1d01-40f6-8d81-f304a7ce7ee4.png'/></li>
+        <li>phone mode - <img alt='image of the password on phone mode' src='https://user-images.githubusercontent.com/108211669/213480878-461711ef-a53b-40d5-b229-c3b8c7cccd7f.png'/></li>
     </ul>
 </details>
 <details open>
