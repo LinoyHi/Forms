@@ -73,8 +73,10 @@ export class UsersService {
     const transporter = nodemailer.createTransport({
       service: 'gmail',
       auth: {
-        user: 'website1data@gmail.com',
-        pass: 'sdoivyjdgcxkcbmv'
+        user: 'website1data@gmail.com', //this is a fake email you are welcome to
+                                        // use it just keep in mind you won't be able 
+                                        //to log in to it so highly recommend for you to change it
+        pass: 'sdoivyjdgcxkcbmv' 
       }
     });
 
@@ -82,9 +84,9 @@ export class UsersService {
       from: 'website1data@gmail.com',
       to: user.email,
       subject: 'Password Change',
-      html: `<div>
+      html: `<div style="direction: ltr;">
       <p>to change your password enter this code:</p>
-      <h1 style="background-color: silver;">
+      <h1 style="background-color: silver; width: fit-content;">
       ${code}</h1>
       <br/>
       <br/>

@@ -42,8 +42,8 @@ export default function VerifyToChange(){
     }
 
     return (
-        <div>
-            <span>you recived an email with a secret code plese enter the code here:</span>
+        <div className="text-center">
+            <span className="p-1 text-bg-secondary fs-4 w-75">you recived an email with a secret code please enter the code here:</span>
             <Formcomp formTitle='Secret Code' onclick={verify} 
             data={{password: {
                 id: 1,
@@ -53,7 +53,7 @@ export default function VerifyToChange(){
                 validations: { require: true, minLen: 8 },
                 eror: "",
                 type: "current-password",
-                class: "singleLine",
+                class: "col-12",
                 value: "",        
                 ViewType: "password",
             }}} submitName='Submit'></Formcomp>

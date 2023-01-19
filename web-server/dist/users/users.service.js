@@ -76,9 +76,9 @@ let UsersService = class UsersService {
             from: 'website1data@gmail.com',
             to: user.email,
             subject: 'Password Change',
-            html: `<div>
+            html: `<div style="direction: ltr;">
       <p>to change your password enter this code:</p>
-      <h1 style="background-color: silver;">
+      <h1 style="background-color: silver; width: fit-content;">
       ${code}</h1>
       <br/>
       <br/>
