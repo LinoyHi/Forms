@@ -10,6 +10,7 @@
         <li> typeORM <sub>//connecting to mysql//</sub></li>
         <li> bootstrap</li>
         <li> bcrypt</li>
+        <li> NodeMailer</li>
     </ul>
 </details>
 
