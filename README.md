@@ -3,13 +3,13 @@
     <summary>This Project Include:</summary>
     <ul>
         <li> MySQL</li>
-        <li> react</li>
+        <li> React</li>
         <li> Redux/Toolkit</li>
         <li> Redux/Persist</li>
-        <li> nestJS</li>
-        <li> typeORM <sub>//connecting to mysql//</sub></li>
-        <li> bootstrap</li>
-        <li> bcrypt</li>
+        <li> NestJS</li>
+        <li> TypeORM <sub>//connecting to mysql//</sub></li>
+        <li> Bootstrap</li>
+        <li> Bcrypt</li>
         <li> NodeMailer</li>
     </ul>
 </details>
