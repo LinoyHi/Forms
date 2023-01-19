@@ -38,15 +38,15 @@ export default function LogIn() {
         date.setDate(date.getDate() + 7);
         dispatch(addChangePasswordExpiration(JSON.stringify(date)))
         const identifier = data.usernameOrEmail.value
-        let fp= undefined
+        let fp = undefined
         if (identifier) {
             validate(identifier, { email: true }, "usernameOrEmail") ?
-            dispatch(changeUser({username: identifier}))
-            : dispatch(changeUser({email: identifier}))
+                dispatch(changeUser({ username: identifier }))
+                : dispatch(changeUser({ email: identifier }))
             validate(identifier, { email: true }, "usernameOrEmail") ?
-                fp = await fogotPasswordMail({username: identifier, expiredate: date}) : 
-                fp = await fogotPasswordMail({email: identifier, expiredate: date})
-            if(fp.ok){
+                fp = await fogotPasswordMail({ username: identifier, expiredate: date }) :
+                fp = await fogotPasswordMail({ email: identifier, expiredate: date })
+            if (fp.ok) {
                 navigate('/authorize')
                 return
             }
@@ -59,8 +59,11 @@ export default function LogIn() {
             {data ?
                 <Formcomp formTitle='Log In' onclick={setuser}
                     data={data} submitName='enter'></Formcomp> : <h1>please wait..</h1>}
-            <p className="App-link" onClick={forgot_password}>forgot password?</p>
-            <span><Link to={'/home'}>Enter as guest</Link> OR <Link to={'/signup'}>Sign up</Link></span>
+            <div className="p-1 text-bg-light">
+                <Link onClick={forgot_password}>forgot password?</Link>
+                <br />
+                <span><Link to={'/home'}>Enter as guest</Link> OR <Link to={'/signup'}>Sign up</Link></span>
+            </div>
         </div>
     )
 }
