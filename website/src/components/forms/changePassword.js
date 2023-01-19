@@ -28,8 +28,8 @@ export default function ChangePassword(){
         const password = allset.password.value
         if(password === allset.repeatPassword.value){
             const response = await changePassword(userData.user.email||userData.user.username, password)
+            dispatch(addChangePasswordExpiration(JSON.stringify(new Date())))
             if(response.ok){
-                dispatch(addChangePasswordExpiration(JSON.stringify(new Date())))
                 navigate('/')
                 return
             }
