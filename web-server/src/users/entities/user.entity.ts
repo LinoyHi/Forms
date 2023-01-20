@@ -94,4 +94,11 @@ export class User {
         default: '',
     })
     gender:string
+
+    @Column({
+        nullable:true, 
+        type:Date,
+        default: null,
+    })
+    birthday:Date
 }

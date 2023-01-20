@@ -10,4 +10,5 @@ export declare class User {
     phone: string;
     manager: Boolean;
     gender: string;
+    birthday: Date;
 }

@@ -20,5 +20,10 @@ export function validate(tovalidate,waysto,title){
             eror.push(`${title} must include letters '@' and '.'`)
         }
     }
+    if(waysto.maxDate){
+        if(new Date(tovalidate) > new Date(waysto.maxDate)){
+            eror.push(`${title} must be before today`)
+        }
+    }
     return eror.join(', ')
 }
