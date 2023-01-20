@@ -119,5 +119,11 @@ To add them simply go to the api file (website folder => src folder => DAL folde
 
 # More
 please read the inside README of both web-server and website files
+<br/>
 web-server is more information about nestJS
+<br/>
 and website is more information about react
+<br/>
+#also if you'll like to change the phone input in the formGroupType file please read :
+<br/>
+[react-phone-input-2 npm](https://www.npmjs.com/package/react-phone-input-2) or [react-phone-input-2 git](https://github.com/bl00mber/react-phone-input-2)
