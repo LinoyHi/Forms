@@ -56,11 +56,12 @@ please change the mail in both **transporter** AND **mailOptions**
 # How to add/change validation?
 ### What is already optional?
 <details open>
-    <summary>Four validations already exsist:</summary>
+    <summary>Five validations already exsist:</summary>
     <li>- [x] require <sub>checks if any input was added also if a line is required there's a red star next to it</sub></li>
     <li>- [x] email <sub>checks if the input is the correct format for an email using regax</sub></li>
     <li>- [x] minLen <sub>checks if the input lengths is at least the amount you asked for</sub></li>
     <li>- [x] numbers <sub>checks if the input has at least 1 number</sub></li>
+    <li>- [x] maxDate <sub>checks if the input date is lower the the maxDate you asked to check</sub></li>
 </details>
  
 
@@ -85,7 +86,7 @@ To add them simply go to the api file (website folder => src folder => DAL folde
 <details>
     <summary>Sign up form</summary>
     <ul>
-        <li><img alt='image of the Sign up form' src='https://user-images.githubusercontent.com/108211669/213736760-00ce0ab0-895c-4962-8469-574ab52efb25.png'/></li>
+        <li><img alt='image of the Sign up form' src='https://user-images.githubusercontent.com/108211669/213750340-a729ed86-3078-42dc-bdb3-1b2eac7ab62c.png'/></li>
     </ul>
 </details>
 <details>
