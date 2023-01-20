@@ -11,6 +11,7 @@
         <li> Bootstrap</li>
         <li> Bcrypt</li>
         <li> NodeMailer</li>
+        <li> React-phone-input-2</li>
     </ul>
 </details>
 
