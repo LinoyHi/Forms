@@ -120,7 +120,7 @@ const formData = {
         value: ""
     },
     Birthday: {
-        id: 9,
+        id: 10,
         serverName: 'birthday',
         placeholder: "",
         label: "Birthday", iconName: "calendar",
