@@ -116,7 +116,19 @@ const formData = {
         eror: "",
         type: "button",
         options: ['female','male','non-binary','prefer not to say'],
-        class: "col-12",
+        class: "col-lg-6 col-md-12",
+        value: ""
+    },
+    Birthday: {
+        id: 9,
+        serverName: 'birthday',
+        placeholder: "",
+        label: "Birthday", iconName: "calendar",
+        validations: { maxDate : new Date(), require: true },
+        eror: "",
+        type: "date",
+        options: [],
+        class: "col-lg-6 col-md-12",
         value: ""
     },
 }
