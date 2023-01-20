@@ -85,7 +85,7 @@ To add them simply go to the api file (website folder => src folder => DAL folde
 <details>
     <summary>Sign up form</summary>
     <ul>
-        <li><img alt='image of the Sign up form' src='https://user-images.githubusercontent.com/108211669/213479708-764d19b4-8a83-4264-8cf9-4db2f5254a4b.png'/></li>
+        <li><img alt='image of the Sign up form' src='https://user-images.githubusercontent.com/108211669/213736760-00ce0ab0-895c-4962-8469-574ab52efb25.png'/></li>
     </ul>
 </details>
 <details>
