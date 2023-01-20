@@ -9,6 +9,26 @@
     text-shadow: 1px 1px 3px white;
 }
 
+.choosen{
+    border-color: aquamarine;
+}
+
+.phoneClass{
+    width: 35.38vw !important;
+}
+
+@media (max-width: 900px) {
+    .phoneClass{
+        width: 73.4vw !important;
+    }
+}
+
+@media (max-width: 600px) {
+    .phoneClass{
+        width: 68vw !important;
+    }
+}
+
 .formbutton {
     cursor: pointer;
     background-image: linear-gradient(10deg, rgb(123, 58, 58), darkred, rgb(62, 1, 62), darkred, rgb(123, 58, 58));

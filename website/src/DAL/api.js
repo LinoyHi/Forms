@@ -64,7 +64,7 @@ const formData = {
         serverName: 'phone',
         placeholder: "phone number",
         label: "Phone Number", iconName: "telephone-fill",
-        validations: { minLen: 9 },
+        validations: { },
         eror: "",
         type: "phone",
         options: [],
