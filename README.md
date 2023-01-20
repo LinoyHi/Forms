@@ -116,6 +116,8 @@ To add them simply go to the api file (website folder => src folder => DAL folde
     </ul>
 </details>
 
+# Note!
+you might run into a react eror for being conflicted between base and the json package the solution is to enter the package.json and press control+S
 
 # More
 please read the inside README of both web-server and website files
