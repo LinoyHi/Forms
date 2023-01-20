@@ -107,6 +107,18 @@ const formData = {
         class: "col-12",
         value: ""
     },
+    Gender: {
+        id: 9,
+        serverName: 'gender',
+        placeholder: "",
+        label: "Gender", iconName: "person",
+        validations: { },
+        eror: "",
+        type: "button",
+        options: ['female','male','non-binary','prefer not to say'],
+        class: "col-12",
+        value: ""
+    },
 }
 
 export async function getSignUpFormData() {
