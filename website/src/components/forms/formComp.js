@@ -87,10 +87,10 @@ function Formcomp({ formTitle, onclick, data, submitName }) {
         setdata({ ...data })
     }
 
-    function hideOptionEror(e, index) {
+    function hideOptionEror(e, name) {
         if (e.target.value) {
-            data[index].value = e.target.value
-            setdata([...data])
+            data[name].value = e.target.value
+            setdata({...data})
         }
     }
 
