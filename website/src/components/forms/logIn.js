@@ -25,7 +25,9 @@ export default function LogIn() {
         )
         if (user.ok === true) {
             const userData = await user.json()
-            dispatch(changeUser(userData))
+            const date = new Date()
+            date.setDate(date.getDate() + 30)
+            dispatch(changeUser({name:userData.name,firstName:userData.firstName,manager:userData.manager,ConExpiration:date}))
             navigate('/home')
         }
         else {
