@@ -38,7 +38,7 @@ the email I posted is fake and only in use for those projects you can keep it as
 <br/>
 **if you do change** 
 <br/>
-please change the mail in both **transporter** AND **mailOptions**
+please change the email in both **transporter** AND **mailOptions**
 
 ## How To Get The Pass NodeMailer Ask For?
 <details close>
