@@ -33,7 +33,7 @@ export class UsersController {
     const user= await this.usersService.findUserEmailOrUserName(body)
     if (user && bcrypt.compareSync(body.password, user.password)) {
       session.user = user
-      user.password = undefined
+      user.password = bcrypt.hashSync(user.password, 10);
       return user
     }
     throw new HttpException(body.username, HttpStatus.NOT_FOUND);
@@ -92,6 +92,17 @@ export class UsersController {
     }
     const newUser = {...user, ...updateUserDto}
     return this.usersService.update(newUser);
+  }
+
+  @Patch('/reconnect/:name')
+  async updateSession(@Param() {name}, @Session() session:Record<string,any>, @Body() {permission}){
+    const user = await this.usersService.findByUsername(name)
+    if(user && bcrypt.compareSync(user.password, permission)){
+      session.user = user
+      return user
+    }
+    throw new HttpException(name, HttpStatus.NOT_FOUND); 
+    //made for hackers to not know they need more then one Data to reconnect and get the information
   }
 
   @Delete(':usernam')

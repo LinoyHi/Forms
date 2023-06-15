@@ -16,7 +16,7 @@ export const connectUser = createAsyncThunk("user/connect", async (allset, thunk
         const userData = await user.json()
         const date = new Date()
         date.setDate(date.getDate() + 30)
-        return { name: userData.name, firstName: userData.firstName, manager: userData.manager, p: userData.password, ConExpiration: date }
+        return { name: userData.name, firstName: userData.firstName, manager: userData.manager, p: userData.password!=allset.password.value? userData.password : undefined , ConExpiration: date }
         //p is the permission to reconnect the user to the server in case the server falls
     }
 })

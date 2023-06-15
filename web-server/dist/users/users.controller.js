@@ -38,7 +38,7 @@ let UsersController = class UsersController {
         const user = await this.usersService.findUserEmailOrUserName(body);
         if (user && bcrypt.compareSync(body.password, user.password)) {
             session.user = user;
-            user.password = undefined;
+            user.password = bcrypt.hashSync(user.password, 10);
             return user;
         }
         throw new common_1.HttpException(body.username, common_1.HttpStatus.NOT_FOUND);
