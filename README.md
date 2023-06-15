@@ -34,7 +34,7 @@ Go to the web-server folder = > src folder = > config folder => config file
 # How To Connect Your Business Email?
 Go to the web-server folder = > src folder = > users folder => users.service.ts file => sendMail function
 ![image](https://user-images.githubusercontent.com/108211669/212913263-0cf83432-4ff5-46dd-a106-19a1bdf545ee.png)
-the mail I posted is fake and only in use for those projects you can keep it as it is just keep in mind you won't be able to log in to this email
+the email I posted is fake and only in use for those projects you can keep it as it is just keep in mind you won't be able to log in to this email
 <br/>
 **if you do change** 
 <br/>
