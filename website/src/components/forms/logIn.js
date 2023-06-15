@@ -7,7 +7,6 @@ import { useDispatch, useSelector } from "react-redux";
 import { changeUser, addChangePasswordExpiration, connectUser } from "../../features/user/userSlice";
 
 export default function LogIn() {
-    const { user } = useSelector((state)=>state.user);
     const [data, setdata] = useState(null)
     const dispatch = useDispatch();
 
@@ -20,15 +19,18 @@ export default function LogIn() {
     }, [])
     const navigate = useNavigate()
 
-    function setuser(allset) {
-        dispatch(connectUser(allset))
-        user ? navigate('/home') : alert('password or username is incorrect')
+    async function setuser(allset) {
+        const tryToConnectUser = await dispatch(connectUser(allset))
+        const user = tryToConnectUser.payload
+        user ?
+            navigate('/home')
+        :
+            alert('password or username is incorrect')
     }
 
     async function forgot_password() {
         const identifierObj = data.usernameOrEmail
-        if(!identifierObj.eror){
-
+        if (!identifierObj.eror) {
             const date = new Date();
             date.setDate(date.getDate() + 7);
             dispatch(addChangePasswordExpiration(JSON.stringify(date)))
@@ -48,8 +50,8 @@ export default function LogIn() {
             }
             identifierObj.eror = 'please enter user name or email before clicking on forgot password'
         }
-        if(!identifierObj.eror.includes('valid')) {
-            identifierObj.eror+=', please enter a valid user name or email before clicking on forgot password'
+        if (!identifierObj.eror.includes('valid')) {
+            identifierObj.eror += ', please enter a valid user name or email before clicking on forgot password'
         }
     }
 
@@ -60,7 +62,7 @@ export default function LogIn() {
                     data={data} submitName='enter'></Formcomp> : <h1>please wait..</h1>}
             <div className="p-1 text-bg-light">
                 <Link onClick={forgot_password}>forgot password?</Link>
-                <br/>
+                <br />
                 <span><Link to={'/home'}>Enter as guest</Link> OR <Link to={'/signup'}>Sign up</Link></span>
             </div>
         </div>
